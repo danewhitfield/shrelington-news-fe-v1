@@ -10,11 +10,11 @@ const SingleArticle = ({currentArticle, article}) => {
             <p className='article-body'>{article.article.body}</p>
           </div>
           <div className="article-info">
-            <p className='article-votes info-box'>Votes: {article.article.votes}</p>
+            <p className='article-votes info-box'>Votes: <span className="article-link">{article.article.votes}</span></p>
             <p>|</p>
-            <p className='article-comment_count info-box'>Comments: {article.article.comment_count}</p>
+            <p className='article-comment_count info-box'>Comments: <span className="article-link">{article.article.comment_count}</span></p>
             <p>|</p>
-            <p className='article-topic info-box'>Topic: {article.article.topic}</p>
+            <p className='article-topic info-box'>Topic: <span className="article-link">{article.article.topic}</span></p>
           </div>
         </div>
     </div>

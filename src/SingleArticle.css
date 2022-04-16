@@ -59,7 +59,7 @@
     gap: 30px;
 }
 
-/* .info-box {
-    background-color: blue;
-    border: 1px solid white;
-} */
+.article-link {
+    color: var(--main-accent-color);
+    text-decoration: underline;
+}
