@@ -1,0 +1,35 @@
+:root {
+  --main-bg-color: rgb(34, 34, 34);
+  --main-text-color: #eee;
+  --main-navbar-color: rgb(26, 26, 26);
+  --main-accent-color: rgb(255, 196, 0);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.App {
+  width: 100vw;
+}
+
+button {
+  z-index: 1000;
+  /* background-color: transparent;
+  border: none;
+  color: var(--main-text-color); */
+}

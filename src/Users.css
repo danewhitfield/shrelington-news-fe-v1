@@ -1,0 +1,51 @@
+/* USERS */
+.users {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.users-title {
+  margin-top: 30px;
+}
+
+.users-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding: 50px;
+}
+
+.users-list {
+  list-style: none;
+}
+
+.users-li {
+  text-align: center;
+  position: relative;
+}
+
+/* .users-li::after {
+  content: "";
+  position: absolute;
+  left: calc(134px / 8);
+  width: 100px;
+  height: 3px;
+  background-color: var(--main-text-color);
+} */
+
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  border: 2px solid black;
+  transition: all 0.3s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
