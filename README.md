@@ -8,6 +8,8 @@ This is the frontend project for my `Shrelington News` API.
 <br>
 This app allows you to surf the API in a more seemless fashion! Without the tedious task of having to insert weird endpoints into the end of the URL... I've already done that for you!
 
+It was built with a sleek, modern approach and UX in mind. Fully responsive and compatible with all devices and screen sizes. 
+
 ----
 
 ### Get Started
