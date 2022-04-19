@@ -1,0 +1,120 @@
+.comments-container {
+    max-width: 1000px;
+}
+
+.comments-list {
+    margin-top: 50px;
+    list-style: none;
+    background-color: var(--main-navbar-color);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.comments-title {
+    text-align: center;
+}
+
+.single-comment {
+    margin: 10px;
+    padding: 10px;
+    transition: all .3s ease;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 96% 4%;
+}
+
+.single-comment:hover {
+    /* color: var(--main-accent-color); */
+    /* border: 1px solid var(--main-text-color); */
+    transform: scale(1.008);
+}
+
+.comment-body {
+    font-size: 16px;
+}
+
+.comment-author {
+    font-size: 12px;
+    color: var(--main-accent-color);
+}
+
+.post-comment-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-comment-title {
+    position: relative;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.post-comment-title::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -30px;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 1px;
+    background-color: var(--main-text-color);
+}
+
+.post-comment-input {
+    max-width: 800px;
+    width: 60%;
+    height: 100%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.post-comment-input:active,
+.post-comment-input:focus {
+    outline: none;
+}
+
+.post-comment-btn {
+    background-color: var(--main-text-color);
+    color: var(--main-navbar-color);
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    width: 50px;
+    margin-left: -20px;
+    cursor: pointer;
+}
+
+.post-comment-btn:hover {
+    color: var(--main-navbar-color);
+    background-color: var(--main-accent-color);
+}
+
+.delete-btn {
+    color: red;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    /* transition: all 1s ease; */
+}
+
+/* .delete-btn:hover {
+    font-weight: 600;
+} */
+
+.delete-comment-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-avatar {
+    width: 30px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}

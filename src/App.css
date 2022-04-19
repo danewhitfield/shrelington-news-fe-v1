@@ -3,6 +3,17 @@
   --main-text-color: #eee;
   --main-navbar-color: rgb(26, 26, 26);
   --main-accent-color: rgb(255, 196, 0);
+
+  /* LIGHT MODE */
+  --main-light-bg-color: rgb(234, 234, 234);
+  --main-light-text-color: rgb(52, 52, 52);
+  --main-light-navbar-color: rgb(255, 255, 255);
+  --main-light-accent-color: rgb(255, 196, 0);
+}
+
+.light-mode {
+  background-color: var(--main-light-bg-color);
+  color: var(--main-light-text-color);
 }
 
 * {

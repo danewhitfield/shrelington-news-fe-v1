@@ -1,12 +1,13 @@
 .article-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 50px;
 }
 
 .article-card {
-    width: 500px;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,7 +21,6 @@
 
 .article-card:hover {
     transform: scale(1.04);
-    cursor: pointer;
 }
 
 .article-title {
@@ -60,6 +60,54 @@
 }
 
 .article-link {
+    font-size: 16px;
     color: var(--main-accent-color);
     text-decoration: underline;
+}
+
+.vote-btn {
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    color: var(--main-text-color);
+}
+
+.heart-icon {
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.heart-icon-clicked {
+    color: red;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comments-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--main-text-color);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.article-comment_count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-icon {
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
 }
