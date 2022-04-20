@@ -16,54 +16,23 @@ import SingleTopic from "./components/SingleTopic";
 import { getArticles } from "./utils/api";
 
 function App() {
-  // ARTICLES
-  const [articles, setArticles] = useState([]);
-
-  // useEffect(() => {
-  //   getArticles()
-  //     .then((articlesFromApi) => {
-  //       console.log("articlesFromApi:", articlesFromApi);
-  //       setArticles(articlesFromApi.articles);
-  //       setErr(null);
-  //     })
-  //     .catch((err) => {
-  //       setErr("Not found!!!!");
-  //     });
-  //   // fetch("https://shrelington-news.herokuapp.com/api/articles")
-  //   //   .then((res) => res.json())
-  //   //   .then((res) => {
-  //   //     setArticles(res);
-  //   //   });
-  // }, []);
-
-  const [currentArticle, setCurrentArticle] = useState(1);
-  const [article, setArticle] = useState({});
-
-  useEffect(() => {
-    fetch(
-      `https://shrelington-news.herokuapp.com/api/articles/${currentArticle}`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setArticle(res);
-      });
-  }, [currentArticle]);
-  //
-  // -------------------------------------------------------------------------
-  //
-
-  // TOPICS
-  const [currentTopic, setCurrentTopic] = useState();
-  //
-  // -------------------------------------------------------------------------
-  //
-
   // USER
   const user = {
     username: "danewhitfield",
     name: "Dane Whitfield",
     avatar_url: avatar,
   };
+  //
+
+  // ARTICLES
+  const [articles, setArticles] = useState([]);
+  useEffect(() => {
+    getArticles().then((res) => {
+      setArticles(res);
+    });
+  }, []);
+  //
+  // -------------------------------------------------------------------------
   //
 
   return (
@@ -73,43 +42,18 @@ function App() {
         <Route path="/" element={<Home user={user} articles={articles} />} />
         <Route
           path="/articles"
-          element={
-            <Articles
-              currentArticle={currentArticle}
-              setCurrentArticle={setCurrentArticle}
-              articles={articles}
-              setArticles={setArticles}
-            />
-          }
+          element={<Articles articles={articles} setArticles={setArticles} />}
         />
         <Route path="/users" element={<Users />} />
         <Route path="/users/profile" element={<UserProfile user={user} />} />
-        <Route
-          path="/topics"
-          element={
-            <Topics
-              currentTopic={currentTopic}
-              setCurrentTopic={setCurrentTopic}
-            />
-          }
-        />
+        <Route path="/topics" element={<Topics />} />
         <Route
           path="/topics/:slug"
-          element={
-            <SingleTopic currentTopic={currentTopic} articles={articles} />
-          }
+          element={<SingleTopic articles={articles} />}
         />
         <Route
           path="/articles/:article_id"
-          element={
-            <SingleArticle
-              currentArticle={currentArticle}
-              article={article}
-              user={user}
-              // comments={comments}
-              // setComments={setComments}
-            />
-          }
+          element={<SingleArticle user={user} />}
         />
       </Routes>
     </div>

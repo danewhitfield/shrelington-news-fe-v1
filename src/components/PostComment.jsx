@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const PostComment = ({user, setComments, article_id}) => {
+const PostComment = ({user, setComments, params}) => {
     const defaultComment = {
     body: "",
     username: user.username,
@@ -26,18 +26,18 @@ const PostComment = ({user, setComments, article_id}) => {
     })
     const itemBody = {...newComment}
     delete itemBody['comment_id']
-    fetch(`https://shrelington-news.herokuapp.com/api/articles/${article_id}/comments`, {
+    fetch(`https://shrelington-news.herokuapp.com/api/articles/${params.article_id}/comments`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(itemBody)
     })
     .catch((err) => {
       setIsError(true)
-      // setComments(currComments => {
-      //   const newComments = [...currComments]
-      //   newComments.pop()
-      //   return newComments
-      // })
+      setComments(currComments => {
+        const newComments = [...currComments]
+        newComments.pop()
+        return newComments
+      })
     })
     setNewComment()
   }

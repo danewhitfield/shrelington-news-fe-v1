@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../Topics.css'
+import { getTopics } from '../utils/api';
 
-const Topics = ({currentTopic, setCurrentTopic}) => {
+const Topics = ({setCurrentTopic}) => {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
-    fetch("https://shrelington-news.herokuapp.com/api/topics")
-      .then((res) => res.json())
-      .then((res) => {
-        setTopics(res);
-      });
+    getTopics().then(topicsResults => {
+      setTopics(topicsResults)
+    })
   }, []);
 
     const handleClick = (slug) => {

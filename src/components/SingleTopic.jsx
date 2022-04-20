@@ -4,13 +4,15 @@ import {MdCategory} from 'react-icons/md'
 import {AiFillHeart} from 'react-icons/ai'
 import {FaComment} from 'react-icons/fa'
 import '../Topics.css'
+import { useParams } from 'react-router-dom'
 
-const SingleTopic = ({currentTopic, articles}) => {
-    console.log('currentTopic:', currentTopic)
-    const filterTopics = articles.filter(article => article.topic === currentTopic)
+const SingleTopic = ({articles}) => {
+  const params = useParams()
+  const filterTopics = articles.filter(article => article.topic === params.slug)
+  
   return (
     <div className='topics-container'>
-        <h1 className='topic-title'>{currentTopic}</h1>
+        <h1 className='topic-title'>{params.slug}</h1>
         <ul className='topic-articles-list'>
             {filterTopics.map(article => {
                 return ( 

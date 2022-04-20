@@ -3,32 +3,16 @@ import {BsPersonFill} from 'react-icons/bs'
 import {MdCategory} from 'react-icons/md'
 import {AiFillHeart} from 'react-icons/ai'
 import {FaComment} from 'react-icons/fa'
-import { useState, useEffect } from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
-import SingleArticle from './SingleArticle'
-import { getArticles } from '../utils/api'
+import { Link } from 'react-router-dom'
 
-function Articles({currentArticle, setCurrentArticle}) {
-    const [sort_by, setSort_by] = useState()
-    const [articles, setArticles] = useState([]);
-    const [err, setErr] = useState(null);
+function Articles({articles}) {
+    // const [sort_by, setSort_by] = useState()
 
-    useEffect(() => {
-    getArticles().then(res => {
-        setArticles(res)
-    })
-  }, []);
+    // const handleSortBy = (e) => {
+    //     const value = e.target.value
+    //     setSort_by(value)
+    // }
 
-    const handleClick = (article_id) => {
-        setCurrentArticle(article_id)
-    }
-
-    const handleSortBy = (e) => {
-        const value = e.target.value
-        setSort_by(value)
-    }
-
-    if(err) return <p>ERROR!!!!</p>
   if(articles) return (
     <div className="articles">
         <h1 className='articles-title'>Articles</h1>
@@ -47,8 +31,8 @@ function Articles({currentArticle, setCurrentArticle}) {
                         <div>
                             <ul className='articles-list'>
                                         <li className='articles-li' key={article.article_id}>
-                                            <button className='article-btn' onMouseOver={() => handleClick(article.article_id)} >
-                                                <Link to={`/articles/${currentArticle}`}>
+                                            <button className='article-btn'>
+                                                <Link to={`/articles/${article.article_id}`}>
                                                     <h3 key={article.title} value='title'>{article.title}</h3>
                                                     <p><BsPersonFill/> {article.author}</p>
                                                     <p><MdCategory/> {article.topic}</p>
