@@ -28,12 +28,11 @@ function Articles({articles}) {
                 {/* COME BACK TO IMPLEMENT SORT FUNCTIONALITY HERE */}
                 {articles.map(article => {
                     return (
-                        <div>
-                            <ul className='articles-list'>
+                            <ul key={article.article_id} className='articles-list'>
                                         <li className='articles-li' key={article.article_id}>
                                             <button className='article-btn'>
                                                 <Link to={`/articles/${article.article_id}`}>
-                                                    <h3 key={article.title} value='title'>{article.title}</h3>
+                                                    <h3 value='title'>{article.title}</h3>
                                                     <p><BsPersonFill/> {article.author}</p>
                                                     <p><MdCategory/> {article.topic}</p>
                                                     <p><AiFillHeart/> {article.votes}</p>
@@ -42,7 +41,6 @@ function Articles({articles}) {
                                             </button>
                                         </li>
                             </ul>
-                        </div>
                     )
                 })}
             </div>

@@ -15,8 +15,8 @@ const Users = () => {
         <div className='users-container'>
             {users.map(user => {
                 return (
-                    <ul className='users-list'>
-                    <li className='users-li' key={user.username}>
+                    <ul key={user.username} className='users-list'>
+                    <li className='users-li'>
                         <img className='user-avatar' src={user.avatar_url} alt={user.username} />
                         <h3>{user.name}</h3>
                         <h5>{user.username}</h5>

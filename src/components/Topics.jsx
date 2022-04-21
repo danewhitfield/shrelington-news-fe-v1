@@ -23,7 +23,7 @@ const Topics = ({setCurrentTopic}) => {
             <div className='topic-list'>
                 {topics.map(topic => {
                     return (
-                        <button className='topics-btn' onClick={() => handleClick(topic.slug)}>
+                        <button key={topic.slug} className='topics-btn' onClick={() => handleClick(topic.slug)}>
                             <Link to={`/topics/${topic.slug}`}>
                                 <div className='topics'>
                                     <h3>Topic: {topic.slug}</h3>
