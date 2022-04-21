@@ -5,12 +5,12 @@ import DeleteComment from './DeleteComment'
 import PostComment from './PostComment'
 import stockUserAvatar from '../images/placeholder.jpg'
 
-const Comments = ({params, user}) => {
+const Comments = ({article_id, user}) => {
   const [comments, setComments] = useState([])
 
     // COMMENTS
   useEffect(() => {
-    fetch(`https://shrelington-news.herokuapp.com/api/articles/${params.article_id}/comments`)
+    fetch(`https://shrelington-news.herokuapp.com/api/articles/${article_id}/comments`)
       .then(res => res.json())
       .then(res => {
           console.log('res:', res)
@@ -41,7 +41,7 @@ const Comments = ({params, user}) => {
                 )
             })}
 
-            <PostComment user={user} setComments={setComments} params={params}/>
+            <PostComment user={user} setComments={setComments} article_id={article_id}/>
 
         </ul>
     </div>

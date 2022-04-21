@@ -12,29 +12,19 @@ const Topics = ({setCurrentTopic}) => {
     })
   }, []);
 
-    const handleClick = (slug) => {
-        setCurrentTopic(slug)
-    }
-
   return (
-    <div>
+    <div className='topic-container'>
         <h1 className='topic-title'>Topics</h1>
-        <div className="topic-container">
-            <div className='topic-list'>
+            <ul className='topic-list'>
                 {topics.map(topic => {
                     return (
-                        <button key={topic.slug} className='topics-btn' onClick={() => handleClick(topic.slug)}>
-                            <Link to={`/topics/${topic.slug}`}>
-                                <div className='topics'>
+                            <Link className='topics' to={`/topics/${topic.slug}`}>
                                     <h3>Topic: {topic.slug}</h3>
                                     <h5>{topic.description}</h5>
-                                </div>
                             </Link>
-                        </button>
                     )
                 })}
-            </div>
-        </div>
+            </ul>
     </div>
   )
 }

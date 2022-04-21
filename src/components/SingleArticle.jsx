@@ -11,14 +11,14 @@ const SingleArticle = ({user}) => {
   const [showComments, setShowComments] = useState(false)
   const [article, setArticle] = useState({})
 
-  const params = useParams()
+  const {article_id} = useParams()
 
   // VOTES
   const incVoteCount = () => {
     setOptomisticVotes(currVotes => currVotes + 1)
     article.votes += 1
     setCls('heart-icon-clicked')
-    fetch(`https://shrelington-news.herokuapp.com/api/articles/${params.article_id}`, {
+    fetch(`https://shrelington-news.herokuapp.com/api/articles/${article_id}`, {
       method: 'PATCH',
       body: JSON.stringify({inc_votes: 1}),
       headers: {'Content-Type': 'application/json'}
@@ -27,7 +27,7 @@ const SingleArticle = ({user}) => {
 
   // ARTICLE
   useEffect(() => {
-    fetch(`https://shrelington-news.herokuapp.com/api/articles/${params.article_id}`)
+    fetch(`https://shrelington-news.herokuapp.com/api/articles/${article_id}`)
       .then(res => res.json())
       .then(res => {
         setArticle(res.article)
@@ -59,7 +59,7 @@ const SingleArticle = ({user}) => {
         </div>
 
         {showComments && (
-          <Comments params={params} user={user} />
+          <Comments article_id={article_id} user={user} />
         )}
     </div>
   )

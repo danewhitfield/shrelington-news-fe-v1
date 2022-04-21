@@ -1,6 +1,7 @@
+import { TextField } from '@mui/material'
 import React, { useState } from 'react'
 
-const PostComment = ({user, setComments, params}) => {
+const PostComment = ({user, setComments, article_id}) => {
     const defaultComment = {
     body: "",
     username: user.username,
@@ -26,7 +27,7 @@ const PostComment = ({user, setComments, params}) => {
     })
     const itemBody = {...newComment}
     delete itemBody['comment_id']
-    fetch(`https://shrelington-news.herokuapp.com/api/articles/${params.article_id}/comments`, {
+    fetch(`https://shrelington-news.herokuapp.com/api/articles/${article_id}/comments`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(itemBody)
@@ -47,6 +48,14 @@ const PostComment = ({user, setComments, params}) => {
             <h3 className='post-comment-title'>Post a comment</h3>
             <div className='post-comment-container'>
                 <textarea className='post-comment-input' name='body' type="textarea" onChange={(e) => handleChange(e)} />
+                {/* <TextField
+          id="outlined-textarea post-comment-input"
+          label="Post a comment"
+          fullWidth={true}
+          placeholder="Share your thoughts about this article!"
+          onChange={handleChange}
+          multiline
+        /> */}
                 <button className='post-comment-btn' onClick={(e) => handleClick(e)}>POST</button>
             </div>
         { isError && <p className="err-msg">Something went wrong :(</p> }

@@ -7,12 +7,12 @@ import '../Topics.css'
 import { useParams } from 'react-router-dom'
 
 const SingleTopic = ({articles}) => {
-  const params = useParams()
-  const filterTopics = articles.filter(article => article.topic === params.slug)
+  const {slug} = useParams()
+  const filterTopics = articles.filter(article => article.topic === slug)
   
   return (
     <div className='topics-container'>
-        <h1 className='topic-title'>{params.slug}</h1>
+        <h1 className='topic-title'>{slug}</h1>
         <ul className='topic-articles-list'>
             {filterTopics.map(article => {
                 return ( 
