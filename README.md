@@ -1,7 +1,9 @@
 ![Shrelington_News (1)](https://user-images.githubusercontent.com/80724506/161143477-2ce7a84f-b957-4e8b-a363-b041c4449f1a.png)
 
 ### You Can Find My App Here: 
-##### Put app url here
+#### [Shrelington-News](https://shrelington-news.netlify.app/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ebbcae74-9665-40b6-9667-4c0d808b99f3/deploy-status)](https://app.netlify.com/sites/wondrous-clafoutis-19c977/deploys)
+
 ----
 ### What Does This App Do?
 This is the frontend project for my `Shrelington News` API.
