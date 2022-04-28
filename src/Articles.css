@@ -68,6 +68,41 @@
   cursor: pointer;
 }
 
-/* .article-btn:hover .articles-title {
-  color: var(--main-accent-color) !important;
-} */
+.dropdowns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
+  margin: 10px 0;
+}
+
+.filter-titles {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  /* text-decoration: underline; */
+}
+
+#filter {
+  background-color: transparent;
+  color: var(--main-text-color);
+  border: none;
+  width: auto;
+}
+
+#filter:active,
+#filter:focus {
+  outline: none;
+  color: var(--main-accent-color);
+  background-color: transparent;
+}
+
+.filter-option {
+  color: var(--main-text-color);
+  background-color: transparent;
+}
+
+.filter-option:focus,
+.filter-option:active {
+  color: var(--main-accent-color);
+}

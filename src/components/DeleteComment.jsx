@@ -1,4 +1,5 @@
 import React from 'react'
+import { deleteComment } from '../utils/api'
 
 const DeleteComment = ({comment_id, comments, setComments}) => {
 
@@ -9,6 +10,7 @@ const DeleteComment = ({comment_id, comments, setComments}) => {
             const updatedComments = [...currComments]
             return updatedComments.filter(comment => comment.comment_id !== currentComment[0].comment_id)
         })
+        // deleteComment(comment_id)
         fetch(`https://shrelington-news.herokuapp.com/api/comments/${comment_id}`, {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'}

@@ -1,5 +1,5 @@
 import { TextField } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const PostComment = ({user, setComments, article_id}) => {
     const defaultComment = {
@@ -20,17 +20,18 @@ const PostComment = ({user, setComments, article_id}) => {
   }
 
   const handleClick = (e) => {
-    e.preventDefault();
-    setComments((currComments) => {
-      const addComment = [...currComments, newComment];
-      return addComment;
-    })
+    // e.preventDefault();
     const itemBody = {...newComment}
-    delete itemBody['comment_id']
+    // delete itemBody['comment_id']
     fetch(`https://shrelington-news.herokuapp.com/api/articles/${article_id}/comments`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(itemBody)
+    })
+
+    setComments((currComments) => {
+      const addComment = [...currComments, newComment];
+      return addComment;
     })
     .catch((err) => {
       setIsError(true)

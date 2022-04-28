@@ -18,10 +18,10 @@ const Topics = ({setCurrentTopic}) => {
             <ul className='topic-list'>
                 {topics.map(topic => {
                     return (
-                            <Link className='topics' to={`/topics/${topic.slug}`}>
-                                    <h3>Topic: {topic.slug}</h3>
-                                    <h5>{topic.description}</h5>
-                            </Link>
+                      <Link className='topics' to={`/topics/${topic.slug}`}>
+                        <h3>Topic: {topic.slug}</h3>
+                        <h5>{topic.description}</h5>
+                      </Link>
                     )
                 })}
             </ul>

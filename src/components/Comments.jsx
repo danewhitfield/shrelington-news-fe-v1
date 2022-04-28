@@ -4,6 +4,7 @@ import '../Comments.css'
 import DeleteComment from './DeleteComment'
 import PostComment from './PostComment'
 import stockUserAvatar from '../images/placeholder.jpg'
+import Moment from 'react-moment'
 
 const Comments = ({article_id, user}) => {
   const [comments, setComments] = useState([])
@@ -26,7 +27,14 @@ const Comments = ({article_id, user}) => {
                 return (
                     <li key={comment.comment_id} className='single-comment'>
                         <div className="comment-body-wrapper">
-                            <div><Link to='/users/profile'><img className='comment-avatar' src={comment.author === user.username ? user.avatar_url : stockUserAvatar} alt="user avatar" /></Link></div>
+                            <div className='comment-avatar-time'>
+                              <Link to={`/users/${user.username}`}>
+                                <img className='comment-avatar' src={comment.author === user.username ? user.avatar_url : stockUserAvatar} alt="user avatar" />
+                              </Link>
+                              <Moment className='comment-date' format="YYYY/MM/DD HH:mm">
+                                {comment.created_at}
+                              </Moment>
+                            </div>
                             <div>
                                 <p className='comment-body'>{comment.body}</p>
                                 <p className='comment-author'>{comment.author}</p>
