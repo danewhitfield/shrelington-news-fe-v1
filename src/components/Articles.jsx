@@ -28,7 +28,7 @@ function Articles({articles}) {
     <div className="articles">
         <h1 className='articles-title'>Articles</h1>
         <Dropdowns handleOrderBy={handleOrderBy} handleSortBy={handleSortBy} handleFilterTopics={handleFilterTopics} />
-        {/* <OrderBy handleOrderBy={handleOrderBy} setOrderBy={setOrderBy} /> */}
+        <OrderBy handleOrderBy={handleOrderBy} setOrderBy={setOrderBy} orderBy={orderBy} sortBy={sortBy} articles={articles} />
         <SortBy handleSortBy={handleSortBy} sortBy={sortBy} articles={articles} />
         <FilterTopics articles={articles} filterTopics={filterTopics}/>
     </div>

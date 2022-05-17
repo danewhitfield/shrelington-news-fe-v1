@@ -5,7 +5,7 @@ import {AiFillHeart} from 'react-icons/ai'
 import {FaComment} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
-const SortBy = ({articles, sortBy, filterTopics}) => {
+const SortBy = ({articles, sortBy}) => {
 
     if(sortBy === 'comment_count') {
         articles.sort((a, b) => b.comment_count - a.comment_count)
