@@ -14,16 +14,11 @@ import Topics from "./components/Topics";
 import SingleArticle from "./components/SingleArticle";
 import SingleTopic from "./components/SingleTopic";
 import { getArticles } from "./utils/api";
-import { createTheme } from "@mui/material";
-import { ThemeProvider } from "@emotion/react";
-
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-  },
-});
 
 function App() {
+
+  const [isLoading, setIsLoading] = useState(false)
+
   // USER
   const user = {
     username: "danewhitfield",
@@ -35,8 +30,10 @@ function App() {
   // ARTICLES
   const [articles, setArticles] = useState([]);
   useEffect(() => {
+    setIsLoading(true)
     getArticles().then((res) => {
       setArticles(res);
+      setIsLoading(false)
     });
   }, []);
   //
@@ -44,11 +41,10 @@ function App() {
   //
 
   return (
-    <ThemeProvider theme={darkTheme}>
       <div className="App">
         <Nav user={user} />
         <Routes>
-          <Route path="/" element={<Home user={user} articles={articles} />} />
+          <Route path="/" element={<Home user={user} articles={articles} isLoading={isLoading} />} />
           <Route
             path="/articles"
             element={<Articles articles={articles} setArticles={setArticles} />}
@@ -69,7 +65,6 @@ function App() {
           />
         </Routes>
       </div>
-    </ThemeProvider>
   );
 }
 

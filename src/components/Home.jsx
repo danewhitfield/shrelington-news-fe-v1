@@ -1,7 +1,8 @@
 import React from 'react'
 import '../Home.css'
+import LoadingSpinner from './LoadingSpinner'
 
-function Home({user, articles}) {
+function Home({user, articles, isLoading}) {
 
   const homeArticles = articles.filter((article, i) => i < 7 && article)
 
@@ -22,6 +23,8 @@ function Home({user, articles}) {
           })}
         </ul>
       </div>
+
+      {isLoading && <LoadingSpinner />}
     </div>
   )
 }

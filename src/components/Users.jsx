@@ -1,11 +1,17 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { getUsers } from '../utils/api'
+import LoadingSpinner from './LoadingSpinner'
 
 const Users = () => {
+    const [isLoading, setIsLoading] = useState(false)
+
     const [users, setUsers] = useState([])
     useEffect(() => {
-        fetch('https://shrelington-news.herokuapp.com/api/users').then(res => res.json()).then((res) => {
+        setIsLoading(true)
+        getUsers().then(res => {
             setUsers(res.users)
+            setIsLoading(false)
         })
     }, [])
 
@@ -13,7 +19,7 @@ const Users = () => {
     <div className="users">
         <h1 className='users-title'>Users</h1>
         <div className='users-container'>
-            {users.map(user => {
+            {users && users.map(user => {
                 return (
                     <ul key={user.username} className='users-list'>
                     <li className='users-li'>
@@ -24,6 +30,8 @@ const Users = () => {
                 </ul>
                 )
             })}
+
+            {isLoading && <LoadingSpinner />}
         </div>
     </div>
   )

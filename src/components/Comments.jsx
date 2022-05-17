@@ -5,18 +5,21 @@ import DeleteComment from './DeleteComment'
 import PostComment from './PostComment'
 import stockUserAvatar from '../images/placeholder.jpg'
 import Moment from 'react-moment'
+import { getComments } from "../utils/api";
+import LoadingSpinner from './LoadingSpinner'
+
 
 const Comments = ({article_id, user}) => {
   const [comments, setComments] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
     // COMMENTS
   useEffect(() => {
-    fetch(`https://shrelington-news.herokuapp.com/api/articles/${article_id}/comments`)
-      .then(res => res.json())
-      .then(res => {
-          console.log('res:', res)
-        setComments(res.comments)
-      })
+    setIsLoading(true)
+    getComments(article_id).then(res => {
+      setComments(res.comments)
+      setIsLoading(false)
+    })
   }, [])
 
   return (
@@ -48,6 +51,8 @@ const Comments = ({article_id, user}) => {
                     </li>
                 )
             })}
+
+            {isLoading && <LoadingSpinner />}
 
             <PostComment user={user} setComments={setComments} article_id={article_id}/>
 

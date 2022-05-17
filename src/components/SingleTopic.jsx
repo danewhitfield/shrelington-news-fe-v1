@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom'
 const SingleTopic = ({articles}) => {
   const {slug} = useParams()
   const filterTopics = articles.filter(article => article.topic === slug)
-  
+
   return (
     <div className='topics-container'>
         <h1 className='topic-title'>{slug}</h1>

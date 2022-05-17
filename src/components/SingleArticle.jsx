@@ -3,13 +3,16 @@ import {AiFillHeart} from 'react-icons/ai'
 import {FaComment} from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
 import '../SingleArticle.css'
+import { getArticle, patchLikes } from '../utils/api'
 import Comments from './Comments'
+import LoadingSpinner from './LoadingSpinner'
 
 const SingleArticle = ({user}) => {
   const [optomisticVotes, setOptomisticVotes] = useState(0)
   const [cls, setCls] = useState('heart-icon')
   const [showComments, setShowComments] = useState(false)
   const [article, setArticle] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
 
   const {article_id} = useParams()
 
@@ -18,20 +21,16 @@ const SingleArticle = ({user}) => {
     setOptomisticVotes(currVotes => currVotes + 1)
     article.votes += 1
     setCls('heart-icon-clicked')
-    fetch(`https://shrelington-news.herokuapp.com/api/articles/${article_id}`, {
-      method: 'PATCH',
-      body: JSON.stringify({inc_votes: 1}),
-      headers: {'Content-Type': 'application/json'}
-    })
+    patchLikes(article_id)
   }
 
   // ARTICLE
   useEffect(() => {
-    fetch(`https://shrelington-news.herokuapp.com/api/articles/${article_id}`)
-      .then(res => res.json())
-      .then(res => {
-        setArticle(res.article)
-      })
+    setIsLoading(true)
+    getArticle(article_id).then(res => {
+      setArticle(res.article)
+      setIsLoading(false)
+    })
   }, [])
 
   const addComment = () => {
@@ -61,6 +60,8 @@ const SingleArticle = ({user}) => {
         {showComments && (
           <Comments article_id={article_id} user={user} />
         )}
+
+        {isLoading && <LoadingSpinner />}
     </div>
   )
 }

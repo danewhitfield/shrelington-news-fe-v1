@@ -2,13 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../Topics.css'
 import { getTopics } from '../utils/api';
+import LoadingSpinner from './LoadingSpinner'
 
 const Topics = ({setCurrentTopic}) => {
   const [topics, setTopics] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
+    setIsLoading(true)
     getTopics().then(topicsResults => {
       setTopics(topicsResults)
+      setIsLoading(false)
     })
   }, []);
 
@@ -25,6 +29,8 @@ const Topics = ({setCurrentTopic}) => {
                     )
                 })}
             </ul>
+
+            {isLoading && <LoadingSpinner />}
     </div>
   )
 }
