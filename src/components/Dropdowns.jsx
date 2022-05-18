@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Dropdowns = ({handleOrderBy, handleSortBy, handleFilterTopics}) => {
+const Dropdowns = ({handleOrderBy, handleSortBy}) => {
   return (
     <div className="dropdowns">
             <div>
@@ -17,15 +17,6 @@ const Dropdowns = ({handleOrderBy, handleSortBy, handleFilterTopics}) => {
                     <option value="comment_count">Comment Count</option>
                     <option value="created_at">Date</option>
                     <option value="votes">Votes</option>
-                </select>
-            </div>
-            <div>
-                <p className='filter-titles'>Filter Topics</p>
-                <select name="filter-topics" id="filter" onChange={e => {handleFilterTopics(e)}}>
-                    <option className='filter-option' value="all">All</option>
-                    <option className='filter-option' value="cooking">Cooking</option>
-                    <option className='filter-option' value="football">Football</option>
-                    <option className='filter-option' value="coding">Coding</option>
                 </select>
             </div>
         </div>
